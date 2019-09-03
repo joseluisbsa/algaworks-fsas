@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class CategoriaResource {
 	private CategoriaRepository repository;
 	
 	@PostMapping
-	public ResponseEntity<Categoria> save(@RequestBody Categoria categoria, HttpServletResponse res) {
+	public ResponseEntity<Categoria> save(@Valid @RequestBody Categoria categoria, HttpServletResponse res) {
 		Categoria c = repository.save(categoria);
 		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
