@@ -59,5 +59,11 @@ public class PessoaResource {
 		Pessoa pessoaSalva = service.atualizar(id, pessoa);
 		return ResponseEntity.ok(pessoaSalva);
 	}
+	
+	@PutMapping("/{id}/ativo")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void atualizarPropAtivo(@PathVariable Long id, @RequestBody Boolean ativo) {
+		service.atualizarPropAtivo(id, ativo);
+	}
 
 }
