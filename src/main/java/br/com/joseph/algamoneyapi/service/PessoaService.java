@@ -23,7 +23,7 @@ public class PessoaService {
 		return repository.save(pessoaSalva);
 	}
 
-	private Pessoa findById(Long id) {
+	public Pessoa findById(Long id) {
 		Pessoa pessoa = repository.findOne(id);
 		if(isNull(pessoa)) 
 			throw new EmptyResultDataAccessException(1);
