@@ -50,7 +50,14 @@ public class LancamentoResource {
 	private MessageSource messageSource;
 
 	@GetMapping
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
 	public Page<Lancamento> pesquisar(LancamentoFilter filter, Pageable pageable) {
+		return repository.filtrar(filter, pageable);
+	}
+	
+	@GetMapping(params = "resumo") // projeção
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
+	public Page<Lancamento> resumir(LancamentoFilter filter, Pageable pageable) {
 		return repository.filtrar(filter, pageable);
 	}
 
